@@ -1,7 +1,6 @@
 package study.cafekiosk.unit;
 
 import lombok.Getter;
-import net.bytebuddy.implementation.bytecode.Throw;
 import study.cafekiosk.unit.beverages.Beverage;
 import study.cafekiosk.unit.order.Order;
 
@@ -40,6 +39,7 @@ public class CafeKiosk {
         beverages.clear();
     }
 
+
     public int calculateTotalPrice() {
         return beverages.stream().mapToInt(Beverage::getPrice).sum();
     }
@@ -64,5 +64,6 @@ public class CafeKiosk {
 
         return new Order(currentDateTime, beverages);
     }
+
 
 }

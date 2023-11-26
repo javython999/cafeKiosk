@@ -1,5 +1,6 @@
 package study.cafekiosk;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import study.cafekiosk.unit.CafeKiosk;
 import study.cafekiosk.unit.beverages.Beverage;
@@ -25,6 +26,7 @@ class CafeKioskApplicationTests {
     }
 
 
+    @DisplayName("음료 1개 추가하면 주문 목록에 담긴다.")
     @Test
     void orderAdd() {
         CafeKiosk cafeKiosk = new CafeKiosk();
@@ -85,6 +87,26 @@ class CafeKioskApplicationTests {
 
         cafeKiosk.clear();
         assertThat(cafeKiosk.getBeverages()).isEmpty();
+    }
+
+
+    @Test
+    @DisplayName("주문 목록에 담긴 상품들의 총 금액을 계산할 수 있다.")
+    void calculateTotalPrice() {
+        // given
+        CafeKiosk cafeKiosk = new CafeKiosk();
+        Beverage americano = new Americano();
+        Beverage latter = new Latte();
+
+        cafeKiosk.add(americano);
+        cafeKiosk.add(latter);
+
+        // when
+        int totalPrice = cafeKiosk.calculateTotalPrice();
+
+        // then
+        assertThat(totalPrice).isEqualTo(8500);
+
     }
 
 
