@@ -1,1 +1,48 @@
+spring:
+  profiles:
+    default: local
 
+  datasource:
+    url: jdbc:mysql://localhost:3306/study
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: study
+    password: study
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+
+  sql:
+    init:
+      mode: always
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  sql:
+    init:
+      mode: never
