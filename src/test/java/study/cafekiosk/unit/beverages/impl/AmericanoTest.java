@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import study.cafekiosk.unit.beverages.Beverage;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class AmericanoTest {
 
