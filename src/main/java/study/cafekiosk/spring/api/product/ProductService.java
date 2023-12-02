@@ -2,6 +2,7 @@ package study.cafekiosk.spring.api.product;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import study.cafekiosk.spring.api.controller.product.dto.request.ProductCreateRequest;
 import study.cafekiosk.spring.api.product.response.ProductResponse;
 import study.cafekiosk.spring.domain.product.Product;
 import study.cafekiosk.spring.domain.product.ProductRepository;
@@ -16,6 +17,10 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
+    public void createProduct(ProductCreateRequest request) {
+        String latestProductNumber = productRepository.findLatestProduct();
+    }
+
     public List<ProductResponse> getSellingProducts() {
         List<Product> products = productRepository.findAllBySellingStatusIn(ProductSellingStatus.forDisplay());
 
@@ -23,4 +28,5 @@ public class ProductService {
                 .map(ProductResponse::of)
                 .collect(Collectors.toList());
     }
+
 }
