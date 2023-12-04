@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import study.cafekiosk.spring.api.controller.product.dto.request.ProductCreateRequest;
 import study.cafekiosk.spring.api.product.response.ProductResponse;
+import study.cafekiosk.spring.api.service.product.request.ProductCreateServiceRequest;
 import study.cafekiosk.spring.domain.product.Product;
 import study.cafekiosk.spring.domain.product.ProductRepository;
 import study.cafekiosk.spring.domain.product.ProductSellingStatus;
@@ -28,7 +29,7 @@ public class ProductService {
 
 
     @Transactional
-    public ProductResponse createProduct(ProductCreateRequest request) {
+    public ProductResponse createProduct(ProductCreateServiceRequest request) {
         String nextProductNumber = createNextProductNumber();
         Product product = request.toEntity(nextProductNumber);
         Product savedProduct = productRepository.save(product);

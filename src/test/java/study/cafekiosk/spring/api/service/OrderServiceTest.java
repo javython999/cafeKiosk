@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import study.cafekiosk.spring.api.controller.order.request.OrderCreateReqeust;
 import study.cafekiosk.spring.api.controller.order.response.OrderResponse;
+import study.cafekiosk.spring.api.service.order.request.OrderCreateServiceRequest;
 import study.cafekiosk.spring.domain.order.OrderRepository;
 import study.cafekiosk.spring.domain.orderproduct.OrderProductRepository;
 import study.cafekiosk.spring.domain.product.Product;
@@ -65,7 +66,7 @@ class OrderServiceTest {
         Product product3 = createProduct(HANDMADE, "003", 5000);
         productRepository.saveAll(List.of(product1, product2, product3));
 
-        OrderCreateReqeust reqeust = OrderCreateReqeust.builder()
+        OrderCreateServiceRequest reqeust = OrderCreateServiceRequest.builder()
                 .productNumbers(List.of("001", "002"))
                 .build();
         
@@ -97,7 +98,7 @@ class OrderServiceTest {
         Product product3 = createProduct(HANDMADE, "003", 5000);
         productRepository.saveAll(List.of(product1, product2, product3));
 
-        OrderCreateReqeust reqeust = OrderCreateReqeust.builder()
+        OrderCreateServiceRequest reqeust = OrderCreateServiceRequest.builder()
                 .productNumbers(List.of("001", "001"))
                 .build();
 
@@ -136,7 +137,7 @@ class OrderServiceTest {
         stockRepository.saveAll(List.of(stock1, stock2));
 
 
-        OrderCreateReqeust reqeust = OrderCreateReqeust.builder()
+        OrderCreateServiceRequest reqeust = OrderCreateServiceRequest.builder()
                 .productNumbers(List.of("001", "001", "002", "003"))
                 .build();
 
@@ -186,7 +187,7 @@ class OrderServiceTest {
         stockRepository.saveAll(List.of(stock1, stock2));
 
 
-        OrderCreateReqeust reqeust = OrderCreateReqeust.builder()
+        OrderCreateServiceRequest reqeust = OrderCreateServiceRequest.builder()
                 .productNumbers(List.of("001", "001", "002", "003"))
                 .build();
 

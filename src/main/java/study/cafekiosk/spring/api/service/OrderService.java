@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import study.cafekiosk.spring.api.controller.order.request.OrderCreateReqeust;
 import study.cafekiosk.spring.api.controller.order.response.OrderResponse;
+import study.cafekiosk.spring.api.service.order.request.OrderCreateServiceRequest;
 import study.cafekiosk.spring.domain.order.Order;
 import study.cafekiosk.spring.domain.order.OrderRepository;
 import study.cafekiosk.spring.domain.product.Product;
@@ -30,7 +31,7 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final StockRepository stockRepository;
 
-    public OrderResponse createOrder(OrderCreateReqeust reqeust, LocalDateTime registeredDateTime) {
+    public OrderResponse createOrder(OrderCreateServiceRequest reqeust, LocalDateTime registeredDateTime) {
         List<String> productNumbers = reqeust.getProductNumbers();
         List<Product> products = findProductsBy(productNumbers);
 
