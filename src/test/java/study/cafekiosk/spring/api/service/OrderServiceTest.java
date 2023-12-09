@@ -50,9 +50,19 @@ class OrderServiceTest {
 
     @AfterEach
     void tearDown() {
+
+        // truncate table
         orderProductRepository.deleteAllInBatch();
         productRepository.deleteAllInBatch();
         orderRepository.deleteAllInBatch();
+
+        // delete (건별 삭제, f key를 같이 지워줌)
+        // orderProductRepository.deleteAll();
+        // productRepository.deleteAll();
+        // orderRepository.deleteAll();
+
+
+
         stockRepository.deleteAllInBatch();
     }
     
