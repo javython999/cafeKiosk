@@ -1,11 +1,8 @@
 package study.cafekiosk.spring.api.service;
 
-import org.assertj.core.groups.Tuple;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-import study.cafekiosk.spring.api.controller.product.dto.request.ProductCreateRequest;
+import study.cafekiosk.spring.IntegrationTestSupport;
 import study.cafekiosk.spring.api.product.ProductService;
 import study.cafekiosk.spring.api.product.response.ProductResponse;
 import study.cafekiosk.spring.api.service.product.request.ProductCreateServiceRequest;
@@ -18,12 +15,10 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.groups.Tuple.tuple;
-import static study.cafekiosk.spring.domain.product.ProductSellingStatus.*;
+import static study.cafekiosk.spring.domain.product.ProductSellingStatus.SELLING;
 import static study.cafekiosk.spring.domain.product.ProductType.HANDMADE;
 
-@ActiveProfiles("test")
-@SpringBootTest
-public class ProductServiceTest {
+class ProductServiceTest extends IntegrationTestSupport {
 
     @Autowired
     private ProductService productService;
@@ -42,7 +37,7 @@ public class ProductServiceTest {
     }
 
     @BeforeEach
-    static void setup() {
+    void setup() {
         // before method
     }
 

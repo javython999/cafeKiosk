@@ -1,15 +1,9 @@
 package study.cafekiosk.spring.api.controller.order;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
-import org.springframework.test.web.servlet.MockMvc;
+import study.cafekiosk.spring.ControllerTestSupport;
 import study.cafekiosk.spring.api.controller.order.request.OrderCreateReqeust;
-import study.cafekiosk.spring.api.service.OrderService;
 
 import java.util.List;
 
@@ -19,17 +13,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(controllers = OrderController.class)
-class OrderControllerTest {
+class OrderControllerTest extends ControllerTestSupport {
 
-    @Autowired
-    private MockMvc mockMvc;
 
-    @Autowired
-    ObjectMapper objectMapper;
-
-    @MockBean
-    OrderService orderService;
 
     @Test
     @DisplayName("신규 주문을 등록한다.")

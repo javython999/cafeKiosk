@@ -4,10 +4,9 @@ package study.cafekiosk.spring.api.service;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import study.cafekiosk.spring.IntegrationTestSupport;
 import study.cafekiosk.spring.client.mail.MailSendClient;
 import study.cafekiosk.spring.domain.history.mail.MailSendHistory;
 import study.cafekiosk.spring.domain.history.mail.MailSendHistoryRepository;
@@ -23,15 +22,13 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static study.cafekiosk.spring.domain.product.ProductSellingStatus.SELLING;
 import static study.cafekiosk.spring.domain.product.ProductType.HANDMADE;
 
-@SpringBootTest
-class OrderStatisticsServiceTest {
+class OrderStatisticsServiceTest extends IntegrationTestSupport {
 
     @Autowired
     private OrderStatisticsService orderStatisticsService;
@@ -48,8 +45,7 @@ class OrderStatisticsServiceTest {
     @Autowired
     private MailSendHistoryRepository mailSendHistoryRepository;
 
-    @MockBean
-    private MailSendClient mailSendClient;
+
 
     @AfterEach
     void tearDown() {

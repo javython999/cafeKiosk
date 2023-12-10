@@ -7,6 +7,7 @@ import study.cafekiosk.spring.api.controller.product.dto.request.ProductCreateRe
 import study.cafekiosk.spring.api.product.response.ProductResponse;
 import study.cafekiosk.spring.api.service.product.request.ProductCreateServiceRequest;
 import study.cafekiosk.spring.domain.product.Product;
+import study.cafekiosk.spring.domain.product.ProductNumberFactory;
 import study.cafekiosk.spring.domain.product.ProductRepository;
 import study.cafekiosk.spring.domain.product.ProductSellingStatus;
 
@@ -26,26 +27,15 @@ import java.util.stream.Collectors;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final ProductNumberFactory productNumberFactory;
 
 
     @Transactional
     public ProductResponse createProduct(ProductCreateServiceRequest request) {
-        String nextProductNumber = createNextProductNumber();
+        String nextProductNumber = productNumberFactory.createNextProductNumber();
         Product product = request.toEntity(nextProductNumber);
         Product savedProduct = productRepository.save(product);
         return ProductResponse.of(savedProduct);
-    }
-
-    private String createNextProductNumber() {
-        String latestProductNumber = productRepository.findLatestProductNumber();
-
-        if(latestProductNumber == null) {
-            return "001";
-        }
-
-        int latestProductNumberInt = Integer.parseInt(latestProductNumber);
-        int nextProductNumber = latestProductNumberInt + 1;
-        return String.format("%03d", nextProductNumber);
     }
 
 
