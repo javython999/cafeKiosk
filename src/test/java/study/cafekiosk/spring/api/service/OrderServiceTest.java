@@ -97,7 +97,7 @@ class OrderServiceTest extends IntegrationTestSupport {
     }
 
     @Test
-    @DisplayName("중복되는 상품번호 리스트로 주믄을 생성할 수 있다.")
+    @DisplayName("중복되는 상품번호 리스트로 주문을 생성할 수 있다.")
     void createOrderWithDuplicateProductNumbers() {
         // given
         LocalDateTime registeredDateTime = LocalDateTime.now();
